@@ -23,6 +23,7 @@ public class Simulador {
         }
         return respuesta;
     }
+    
     /**
      * Metodo multplicacionMatrizVector, calcula la multiplicacion
      * de una matriz por un vector.
