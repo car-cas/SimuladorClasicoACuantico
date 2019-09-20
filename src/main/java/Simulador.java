@@ -6,7 +6,7 @@ import java.util.Arrays;
  */
 public class Simulador {
     /**
-     * Metodo programmingDrill311, realiza la simulacion del programa 3.1.1 y 3.2.1 del libro.
+     * Metodo programmingDrill311Y321, realiza la simulacion del programa 3.1.1 y 3.2.1 del libro.
      * Dada una matriz, un vector y unos determinados clicks determina el numero de
      * movimiento de canicas.
      * @param matriz [][]
