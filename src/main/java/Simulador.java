@@ -9,38 +9,28 @@ public class Simulador {
      * Metodo programmingDrill311Y321, realiza la simulacion del programa 3.1.1 y 3.2.1 del libro.
      * Dada una matriz, un vector y unos determinados clicks determina el numero de
      * movimiento de canicas.
-     * @param matriz [][]
-     * @param estadoInicial []
+     * @param matriz double[][]
+     * @param estadoInicial double[]
      * @param clicks int
      * @return
      */
-    public double[] programmingDrill311Y321 (double[][]matriz,double[]estadoInicial, int clicks){
+    public double[] programmingDrill311Y321(double[][]matriz,double[]estadoInicial,int clicks){
         double [] respuesta = new double[estadoInicial.length];
-        for (int i = 0; i < clicks ; i++) {
-            respuesta = multiplicacionMatrizVector(matriz,estadoInicial);
-        }
-        return respuesta;
-    }
-    /**
-     * Metodo multplicacionMatrizVector, calcula la multiplicacion
-     * de una matriz por un vector.
-     * @param matriz double[][]
-     * @param estadoInicial double []
-     * @return
-     */
-    public double[] multiplicacionMatrizVector(double[][]matriz,double[]estadoInicial){
-        double [] respuesta = new double[estadoInicial.length];
-        for (int i = 0; i < estadoInicial.length ; i++) {
-            for (int j =0 ; j< estadoInicial.length;j++){
+        while(clicks!=0) {
+            for (int i = 0; i < estadoInicial.length; i++) {
                 double suma = 0;
-                for (int k = 0; k < estadoInicial.length ; k++) {
-                    suma += matriz[i][k] * estadoInicial[k];
+                for (int j = 0; j < estadoInicial.length; j++) {
+                    suma += matriz[i][j] * estadoInicial[j];
                 }
                 respuesta[i] = suma;
             }
+            System.arraycopy(respuesta, 0, estadoInicial, 0, estadoInicial.length);
+            clicks-=1;
         }
         return respuesta;
+
     }
+
     public static void main(String[] args){
         Simulador marbleSimulator = new Simulador();
         double[][] matriz = new double[4][4];
@@ -78,13 +68,18 @@ public class Simulador {
         matriz2[3][2]=0;
         matriz2[3][3]=0;
         double[] estadoinicial = new double[4];
+        double[] estadoinicial2 = new double[4];
         estadoinicial[0]=6;
         estadoinicial[1]=2;
         estadoinicial[2]=5;
         estadoinicial[3]=3;
-        int clicks = 1;
+        estadoinicial2[0]=6;
+        estadoinicial2[1]=2;
+        estadoinicial2[2]=5;
+        estadoinicial2[3]=3;
+        int clicks = 2;
         System.out.println("Programming Drill 3.1.1 : "+Arrays.toString(marbleSimulator.programmingDrill311Y321(matriz, estadoinicial,clicks)));
-        System.out.println("Programming Drill 3.2.1 : "+Arrays.toString(marbleSimulator.programmingDrill311Y321(matriz2, estadoinicial,clicks)));
+        System.out.println("Programming Drill 3.2.1 : "+Arrays.toString(marbleSimulator.programmingDrill311Y321(matriz2, estadoinicial2,clicks)));
 
     }
 }
