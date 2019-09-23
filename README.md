@@ -8,6 +8,10 @@ Realizado por Carlos Andrés Castañeda Lozano
 
 ## Programming drill 3.2.2
 
+## Programming drill 3.3.1
+
+## Programming drill 3.3.2
+
 ## Ejecución de las pruebas 
 
 **Compiling**
