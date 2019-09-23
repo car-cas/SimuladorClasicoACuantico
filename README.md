@@ -64,5 +64,7 @@ $ mvn package
 ```
 $ mvn test
 ```
+![](src/site/resources/captura.png)
+
 # License
 This project is under the Apache license - see [LICENSE](LICENSE.txt) for more details.
