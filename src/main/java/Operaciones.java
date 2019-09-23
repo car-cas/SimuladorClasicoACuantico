@@ -16,7 +16,7 @@ public class Operaciones {
      * @param y Complejo
      * @return Complejo
      */
-    public  Complejo suma(Complejo x,Complejo y){
+    public  static Complejo suma(Complejo x,Complejo y){
         double respuesta = x.getNumeroA() + y.getNumeroA();
         double respuestaDos = x.getNumeroB() + y.getNumeroB();
         return new Complejo(respuesta,respuestaDos);
@@ -29,7 +29,7 @@ public class Operaciones {
      * @param y Complejo
      * @return Complejo
      */
-    public Complejo producto(Complejo x,Complejo y){
+    public static Complejo producto(Complejo x,Complejo y){
         double respuesta = (x.getNumeroA() * y.getNumeroA())-(x.getNumeroB() * y.getNumeroB());
         double respuestaDos = (x.getNumeroA() * y.getNumeroB())+(x.getNumeroB()* y.getNumeroA());
         return new Complejo(respuesta,respuestaDos);
