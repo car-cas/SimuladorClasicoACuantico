@@ -39,4 +39,9 @@ public class SimuladorTest{
             assertTrue(respuesta[i]==solucion[i]);
         }
     }
+
+    @Test
+    public void programmingDrill331Test(){
+
+    }
 }
