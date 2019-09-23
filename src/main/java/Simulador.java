@@ -5,6 +5,7 @@ import java.util.Arrays;
  * @author Carlos Andres Castaneda Lozano
  */
 public class Simulador {
+    private Complejo[][]matriz;
     /**
      * Metodo programmingDrill311Y321, realiza la simulacion del programa 3.1.1 y 3.2.1 del libro.
      * Dada una matriz, un vector y unos determinados clicks determina el numero de
@@ -29,7 +30,7 @@ public class Simulador {
         }
         return respuesta;
     }
-    
+
     /**
      * Metodo programmingDrill331, realiza la simulacion del programa 3.3.1 del libro.
      * Dada una matriz de complejos, un vector de complejos y unos determinados clicks
@@ -54,5 +55,31 @@ public class Simulador {
 
         }
         return respuesta;
+    }
+
+    public Integer tamanio() { return matriz.length; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Simulador mc = (Simulador) obj;
+        if (this.tamanio() != mc.tamanio()) {
+            return false;
+        }
+        for (int i = 0; i < matriz.length; i++) {
+            Complejo[] numeroComplejos = matriz[i];
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode(){
+        int hash=3;
+        hash = 57 * hash + (int) (Double.doubleToLongBits(this.matriz.hashCode()) ^ (Double.doubleToLongBits(this.matriz.hashCode()) >>> 32));
+        return hash;
     }
 }
