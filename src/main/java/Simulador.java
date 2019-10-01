@@ -6,6 +6,10 @@ import java.util.Arrays;
  */
 public class Simulador {
     private Complejo[][]matriz;
+
+    public Complejo[][] getMatriz(){
+        return matriz;
+    }
     /**
      * Metodo programmingDrill311Y321, realiza la simulacion del programa 3.1.1 y 3.2.1 del libro.
      * Dada una matriz, un vector y unos determinados clicks determina el numero de
@@ -29,6 +33,19 @@ public class Simulador {
             clicks-=1;
         }
         return respuesta;
+    }
+
+    /**
+     * Metodo programmingDill322, realiza la simulacion del programa 3.2.2 del libro.
+     * Permite el calculo de la matriz de probabilidades del experimento de doble rendija
+     * segun la cantidad de rendijas igresadas y numero de objetivos.
+     * @param slits
+     * @param targets
+     * @param probabilidades
+     * @return
+     */
+    public double [][] programmingDrill322(int slits, int targets, int [][] probabilidades){
+        return null;
     }
 
     /**
@@ -79,7 +96,7 @@ public class Simulador {
     @Override
     public int hashCode(){
         int hash=3;
-        hash = 57 * hash + (int) (Double.doubleToLongBits(this.matriz.hashCode()) ^ (Double.doubleToLongBits(this.matriz.hashCode()) >>> 32));
+        hash = 57 * hash + (int) (Double.doubleToLongBits(getMatriz().hashCode()) ^ (Double.doubleToLongBits(getMatriz().hashCode()) >>> 32));
         return hash;
     }
 }
