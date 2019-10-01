@@ -18,13 +18,19 @@ Este programa al igual que el anterior replica el sistema de **Las canicas**, pe
 
 ## Programming drill 3.2.2
 
+Este programa replica el sistema de **La doble rendija**, el cual consiste en calcular la matriz de probabilidades del experimento segun la **cantidad de rendijas** y el **numero de objetivos** igresados por el usuario. 
+
 ## Programming drill 3.3.1
 
-Este programa al igual que el programa **3.1.1** y **3.2.1** replica el siste de **Las canicas**, pero a diferencia de los dos anteriores, se cambia la matriz por una **matriz y vector complejo**.
+Este programa al igual que el programa **3.1.1** y **3.2.1** replica el sistema de **Las canicas**, pero a diferencia de los dos anteriores, se cambia la matriz por una **matriz y vector complejo**.
 
 * Para que el usuario pueda disponer de este programa, tiene que ingresar una **matriz complaja** , un **vector complejo** y el numero de **clicks** que el usuario desea.
 
 ## Programming drill 3.3.2
+
+Este programa al igual que el programa **3.2.2**  hace el experimento de la **doble rendija**, pero adiferncia del anterior, este incluye **numeros complejos**.
+
+* El usuario debe de ingresar la **cantidad de rendijas** y el **numero de objetivos**.
 
 # Pruebas unitarias
 
