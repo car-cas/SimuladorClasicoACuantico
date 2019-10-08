@@ -144,6 +144,7 @@ El experimento de la doble rendija es uno de los grandes misterios de la física
 
 ## Capturas
 
+![](src/site/resources/captura3.png)
 
 # License
 This project is under the Apache license - see [LICENSE](LICENSE.txt) for more details.
