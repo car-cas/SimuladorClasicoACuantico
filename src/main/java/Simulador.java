@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -101,7 +100,7 @@ public class Simulador {
      * @param vector VectorComplejo
      * @return Complejo[]
      */
-    private static Object accionMatrizSobreVector(MatrizCompleja matriz, VectorComplejo vector){
+    private static VectorComplejo accionMatrizSobreVector(MatrizCompleja matriz, VectorComplejo vector){
         VectorComplejo r = new VectorComplejo(new Complejo[vector.getVector().length]);
         Complejo s = new Complejo(0,0);
         for (int i = 0; i < vector.getVector().length; i++) {
@@ -149,6 +148,134 @@ public class Simulador {
             e.printStackTrace();
         }
         return r;
+    }
+
+    /**
+     * Metodo probabilidad, calcular la probabilidad de encontrar una
+     * particual en una posicion en particular.
+     * @param estado VectorComplejo
+     * @param posicion int
+     * @return double
+     */
+    public static double probabilidad(VectorComplejo estado, int posicion) {
+        Double n = 0.0;
+        for(int i = 0; i < estado.getVector().length;i++) {
+            n += Math.pow(estado.getVector()[i].modulo(), 2);
+        }
+        Double norm = Math.sqrt(n);
+        Double prob = Math.pow(estado.getVector()[posicion].modulo(),2) / Math.pow(norm, 2);
+        return prob;
+    }
+
+    /**
+     * Metodo transicion, Calcula la probabilidad de transicion de un estado a otro.
+     * @param estadoInicial VectorComplejo
+     * @param estadoFinal VectorComplejo
+     * @return Complejo
+     */
+    public static Complejo transicion(VectorComplejo estadoInicial, VectorComplejo estadoFinal){
+        VectorComplejo bra = estadoFinal.conjugado();
+        Complejo ans = productoInterno(estadoFinal, estadoInicial);
+        return ans;
+    }
+
+    /**
+     * Metodo productoInterno, calcula el producto interno de 2 vectores dados.
+     * @param v1 VectorComplejo
+     * @param v2 VectorComplejo
+     * @return Complejo
+     */
+    public static Complejo productoInterno(VectorComplejo v1, VectorComplejo v2){
+        Complejo r = new Complejo(0,0);
+        for (int i = 0; i < v1.getVector().length;i++) {
+            r = Operaciones.suma(r, Operaciones.producto(v1.conjugado().getVector()[i], v2.getVector()[i]));
+        }
+        return r;
+    }
+
+    /**
+     * Metodo valorMedia, Calcula la media entre una matriz un vector de numeros complejos.
+     * @param ket VectorComplejo
+     * @param observable MatrizCompleja
+     * @return Complejo
+     */
+    public static Complejo valorMedia(VectorComplejo ket, MatrizCompleja observable){
+        VectorComplejo omegaKet = accionMatrizSobreVector(observable, ket);
+        Complejo ans = productoInterno(omegaKet, ket);
+        return ans;
+    }
+
+    /**
+     * Metodo varianza, calcula la varianza entre un vector y una matriz de numeros complejos.
+     * @param ket VectorComplejo
+     * @param observable MatriComplejo
+     * @return Complejo
+     * @throws Exception
+     */
+    public static Complejo varianza(VectorComplejo ket, MatrizCompleja observable) throws Exception {
+        Complejo mean = valorMedia(ket, observable);
+        MatrizCompleja m = new MatrizCompleja(new Complejo[2][2]);
+        m.getMatriz()[0][0] = mean;
+        m.getMatriz()[0][1] = new Complejo(0, 0);
+        m.getMatriz()[1][0] = new Complejo(0, 0);
+        m.getMatriz()[1][1] = mean;
+        MatrizCompleja subtraction = adicionDeMatrices(observable, m.inversa());
+        MatrizCompleja temp = matrizMultiplicacion(subtraction, subtraction);
+        VectorComplejo act = accionMatrizSobreVector(temp, ket);
+        Complejo ans = productoInterno(ket, act);
+        return ans;
+
+    }
+
+    /**
+     * Metodo matrizMultiplicacion, multiplica dos matrices de complejos
+     * @param m1 MatrizCompleja
+     * @param m2 MatrizCompleja
+     * @return MatrizCompleja
+     */
+    private static MatrizCompleja matrizMultiplicacion(MatrizCompleja m1, MatrizCompleja m2) {
+        MatrizCompleja r = crearMatriz(m1.getMatriz().length, m1.getMatriz()[0].length);
+        Complejo s = new Complejo(0,0);
+        for (int m = 0; m < m1.getMatriz().length; m++) {
+            for (int n = 0; n < m1.getMatriz()[0].length; n++) {
+                for (int i = 0; i < m1.getMatriz().length; i++) {
+                    s = Operaciones.suma(s, Operaciones.producto(m1.getMatriz()[m][i], m2.getMatriz()[i][n]));
+                }
+                r.getMatriz()[m][n] = s;
+                s = new Complejo(0,0);
+            }
+        }
+        return r;
+    }
+
+    /**
+     * Metodo adicionDeMatrices, calcula la suma de dos matrices de numeros complejos
+     * @param m1 MatrizCompleja
+     * @param m2 MatrizCompleja
+     * @return MatrizCompleja
+     */
+    public static MatrizCompleja adicionDeMatrices(MatrizCompleja m1, MatrizCompleja m2) {
+        MatrizCompleja r = crearMatriz(m1.getMatriz().length, m1.getMatriz()[0].length);
+        for (int i = 0; i < m1.getMatriz().length; i++) {
+            for (int j = 0 ; j < m1.getMatriz()[0].length; j++) {
+                r.getMatriz()[i][j] = Operaciones.suma(m1.getMatriz()[i][j], m2.getMatriz()[i][j]);
+            }
+        }
+        return r;
+    }
+
+    /**
+     * Metodo dinamica, calcula el estado final a partir de un estado inicial.
+     * @param m
+     * @param estadoInicial
+     * @return VectorComplejo
+     */
+    public static VectorComplejo dinamica(MatrizCompleja[] m, VectorComplejo estadoInicial){
+        VectorComplejo ans = accionMatrizSobreVector(m[0], estadoInicial);
+        for (int i = 1; i < m.length; i++) {
+            ans = accionMatrizSobreVector(m[1], ans);
+        }
+        return ans;
     }
 
 }

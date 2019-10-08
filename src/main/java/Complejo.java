@@ -32,6 +32,28 @@ public class Complejo {
         return numeroA + " " + simbolo + " " + numeroB + 'i';
     }
 
+    /**
+     *
+     * Metodo suma, calcula el modulo de un numero complejo
+     *
+     * @return Complejo
+     */
+    public double modulo(){
+        double respuesta = Math.sqrt(Math.pow(numeroA,2) + Math.pow(numeroB,2));
+        return respuesta;
+
+    }
+
+    /**
+     *
+     * Metodo conjugado, calcula el conjugado de un numero complejo
+     *
+     * @param x Complejo
+     * @return Complejo
+     */
+    public  Complejo conjugado(){
+        return new Complejo(numeroA,numeroB);
+    }
 
     @Override
     public boolean equals(Object obj) {

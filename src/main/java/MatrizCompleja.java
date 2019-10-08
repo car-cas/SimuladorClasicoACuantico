@@ -13,7 +13,7 @@ public class MatrizCompleja {
         int l = matriz[0].length;
         for (int i = 0; i < matriz.length; i++) {
             if(matriz[i].length != l) {
-                throw new Exception("The rows of the matrix have to be the same length");
+                throw new Exception("Las filas de la matriz deben tener la misma longitud.");
             }
         }
         this.matriz = matriz;
@@ -25,6 +25,25 @@ public class MatrizCompleja {
 
     public Integer tamanio() {
         return matriz.length;
+    }
+
+    /**
+     * Calculates the inverse of a matrix.
+     * @return The inverse of a matrix.
+     */
+    public MatrizCompleja inversa() {
+        MatrizCompleja r = null;
+        try {
+            r = new MatrizCompleja(new Complejo[matriz.length][matriz[0].length]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for(int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                r.getMatriz()[i][j] = Operaciones.producto(matriz[i][j], new Complejo(-1,0));
+            }
+        }
+        return r;
     }
 
     /**
@@ -64,4 +83,5 @@ public class MatrizCompleja {
         hash = 57 * hash + (int) (Double.doubleToLongBits(this.matriz.hashCode()) ^ (Double.doubleToLongBits(this.matriz.hashCode()) >>> 32));
         return hash;
     }
+
 }

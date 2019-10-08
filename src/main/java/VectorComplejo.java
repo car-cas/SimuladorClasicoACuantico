@@ -18,6 +18,18 @@ public class VectorComplejo {
     }
 
     /**
+     * Calculates the conjugate of the complex vector.
+     * @return The conjugate of the complex vector.
+     */
+    public VectorComplejo conjugado() {
+        VectorComplejo r = new VectorComplejo(new Complejo[vector.length]);
+        for(int i = 0; i < vector.length; i++) {
+            r.getVector()[i] = vector[i].conjugado();
+        }
+        return r;
+    }
+
+    /**
      * Compares if 2 complex vectors are equal.
      * @param o The object that will be compared.
      * @return True or false depending if the complex vectors are equal.
