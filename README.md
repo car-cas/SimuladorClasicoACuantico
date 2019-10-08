@@ -131,5 +131,19 @@ $ mvn test
 ## Captura
 ![](src/site/resources/captura2.png)
 
+# Experimento Doble rendija
+
+El experimento de la doble rendija es uno de los grandes misterios de la física cuántica. Consiste, con un láser pasar dos rendijas con un haz de luz. Normalmente, se pensaría que el resultado es en realidad solo dos rendijas, pero forma un montón de rendijas. un comportamiento muy extraño para nosotros, pero básico para el mundo cuántico.
+
+## Desarrollo
+
+* Para este experimento vamos a coger un **laser de 5mW, un alambre de soldadura y cinta negra**.
+* Para que el experimento funcione correctamente debemos de pegar en la mitad del laser el **alambre de soldadura** con ayuda de la **cinta negra**.
+* luego tapamos con **cinta negra** las dos mitades del haz lacer, solo dejando dos finas ranuras, una a cada extremo del **alambre**.
+* Y por ultimo una base para sostener nuestro **laser**.
+
+## Capturas
+
+
 # License
 This project is under the Apache license - see [LICENSE](LICENSE.txt) for more details.
