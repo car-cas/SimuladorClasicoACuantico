@@ -52,7 +52,7 @@ public class Complejo {
      * @return Complejo
      */
     public  Complejo conjugado(){
-        return new Complejo(numeroA,numeroB);
+        return new Complejo(numeroA,numeroB*-1);
     }
 
     @Override
