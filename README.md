@@ -1,4 +1,4 @@
-Realizado por Carlos Andrés Castañeda Lozano
+Realizado por **Carlos Andrés Castañeda Lozano**
 
 # Programa simulación de lo clásico a lo cuántico
 
@@ -34,7 +34,7 @@ Este programa al igual que el programa **3.2.2**  hace el experimento de la **do
 
 # Pruebas unitarias
 
-* Se crearon 5 pruebas unitarias, una por cada programa realizado. Estas pruebas se encuentran en **SimuladorTest**.
+* Se crearon 4 pruebas unitarias, una por cada programa realizado. Estas pruebas se encuentran en **SimuladorTest**.
 * **Ejemplo**:
 ```
 @Test
@@ -55,7 +55,6 @@ Este programa al igual que el programa **3.2.2**  hace el experimento de la **do
 * Para cada una de las pruebas se implementó JUnit y Maven.
 * Se creó un metodo "**equals**" y **hashCode** la cual verifica si los resultados de las pruebas corresponden al resultado esperado.
 
-
 ## Ejecución de las pruebas
 
 **Compiling**
@@ -72,6 +71,65 @@ $ mvn test
 ```
 ## Captura
 ![](src/site/resources/captura.png)
+
+# Sistema cuántico de partícula en una línea
+
+En este programa simularemos el primer sistema cuántico descrito en la **sección 4.1**.
+
+## Probabilidad
+
+Este programa calcula la probabilidad de encontrar una particula en una posición.
+
+## Transición
+
+Este programa al recibir dos vectores y calcular la probabilidad de transitar de el uno al otro después de hacer la observación
+
+## Valor de la media y la varianza del observable
+
+Este programa calcula la media y la varianza del observable en el estado dado.
+
+## Dinámica
+
+Este programa calcula el estado final a partir de un estado inicial.
+
+# Pruebas unitarias
+
+* Se crearon 5 pruebas unitarias, una por cada programa realizado. Estas pruebas se encuentran en **SimuladorTest**.
+* **Ejemplo**:
+
+```
+ @Test
+    public void probabilidadTest() {
+        VectorComplejo state = new VectorComplejo(new Complejo[4]);
+        state.getVector()[0] = new Complejo(-3,-1);
+        state.getVector()[1] = new Complejo(0,-2);
+        state.getVector()[2] = new Complejo(0,1);
+        state.getVector()[3] = new Complejo(2,0);
+        int position = 2;
+        Double expected = 0.052624;
+        Double actual = Simulador.probabilidad(state, position);
+        assertEquals(expected, actual, 0.0001);
+    }
+```
+* Para cada una de las pruebas se implementó JUnit y Maven.
+* Se creó un metodo "**equals**" y **hashCode** la cual verifica si los resultados de las pruebas corresponden al resultado esperado.
+
+## Ejecución de las pruebas
+
+**Compiling**
+```
+$ mvn clean compile
+```
+**Packing**
+```
+$ mvn package
+```
+**Running the tests**
+```
+$ mvn test
+```
+## Captura
+![](src/site/resources/captura2.png)
 
 # License
 This project is under the Apache license - see [LICENSE](LICENSE.txt) for more details.
