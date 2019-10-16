@@ -217,9 +217,8 @@ public class SimuladorTest{
         Complejo actual = Simulador.varianza(ket, observable);
         assertEquals(expected, actual);
     }
-    /**
     @Test
-    public void dynamicsTest() throws Exception {
+    public void dinamicoTest() throws Exception {
         VectorComplejo initialState = new VectorComplejo(new Complejo[2]);
         initialState.getVector()[0] = new Complejo(1, 0);
         initialState.getVector()[1] = new Complejo(0, 0);
@@ -248,11 +247,10 @@ public class SimuladorTest{
         matrixArray[1] = m2;
         matrixArray[2] = m3;
         matrixArray[3] = m4;
-        VectorComplejo expected = new VectorComplejo(new Complejo[4]);
+        VectorComplejo expected = new VectorComplejo(new Complejo[2]);
         expected.getVector()[0] = new Complejo(0, 0);
-        expected.getVector()[1] = new Complejo(0.24999, 0);
+        expected.getVector()[1] = new Complejo(0.24999999999999992, 0);
         VectorComplejo actual = Simulador.dinamica(matrixArray, initialState);
         assertEquals(expected, actual);
     }
-    **/
 }
