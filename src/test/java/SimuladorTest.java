@@ -188,35 +188,53 @@ public class SimuladorTest{
         assertEquals(expected, actual);
     }
 
+    /**
+     * Teoria cuantica basica, pruebas de los test del capitulo 4
+     */
+
+    /**
+     * Test valorMediaTest calcula el valor medio  del observable en el estado dado.
+     * @throws Exception
+     */
     @Test
     public void valorMediaTest() throws Exception {
         VectorComplejo ket = new VectorComplejo(new Complejo[2]);
         ket.getVector()[0] = new Complejo(Math.sqrt(2) / 2, 0);
         ket.getVector()[1] = new Complejo(0, Math.sqrt(2) / 2);
         MatrizCompleja observable = new MatrizCompleja(new Complejo[2][2]);
-        observable.getMatriz()[0][0] = new Complejo(1, 0);
-        observable.getMatriz()[0][1] = new Complejo(0, -1);
-        observable.getMatriz()[1][0] = new Complejo(0, 1);
-        observable.getMatriz()[1][1] = new Complejo(2, 0);
-        Complejo expected = new Complejo(2.5000000000000004, 0);
+        observable.getMatriz()[0][0] = new Complejo(2, 0);
+        observable.getMatriz()[0][1] = new Complejo(0, -2);
+        observable.getMatriz()[1][0] = new Complejo(0, 2);
+        observable.getMatriz()[1][1] = new Complejo(3, 0);
+        Complejo expected = new Complejo(4.500000000000001, 0);
         Complejo actual = Simulador.valorMedia(ket, observable);
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test varianzaTest calcula la varianza del observable en el estado dado.
+     * @throws Exception
+     */
     @Test
     public void varianzaTest() throws Exception {
         VectorComplejo ket = new VectorComplejo(new Complejo[2]);
         ket.getVector()[0] = new Complejo(Math.sqrt(2) / 2, 0);
         ket.getVector()[1] = new Complejo(0, Math.sqrt(2) / 2);
         MatrizCompleja observable = new MatrizCompleja(new Complejo[2][2]);
-        observable.getMatriz()[0][0] = new Complejo(1, 0);
-        observable.getMatriz()[0][1] = new Complejo(0, -1);
-        observable.getMatriz()[1][0] = new Complejo(0, 1);
-        observable.getMatriz()[1][1] = new Complejo(2, 0);
-        Complejo expected = new Complejo(0.25, 0);
+        observable.getMatriz()[0][0] = new Complejo(2, 0);
+        observable.getMatriz()[0][1] = new Complejo(0, -2);
+        observable.getMatriz()[1][0] = new Complejo(0, 2);
+        observable.getMatriz()[1][1] = new Complejo(3, 0);
+        Complejo expected = new Complejo(0.2499999999999989, 0);
         Complejo actual = Simulador.varianza(ket, observable);
         assertEquals(expected, actual);
     }
+
+    /**
+     *Test dinamicoTest, calcula la dinamica del sistema, el sistema calcula el estado final
+     * a partir de un estado inicial.
+     * @throws Exception
+     */
     @Test
     public void dinamicoTest() throws Exception {
         VectorComplejo initialState = new VectorComplejo(new Complejo[2]);
@@ -251,6 +269,13 @@ public class SimuladorTest{
         expected.getVector()[0] = new Complejo(0, 0);
         expected.getVector()[1] = new Complejo(0.24999999999999992, 0);
         VectorComplejo actual = Simulador.dinamica(matrixArray, initialState);
-        assertEquals(expected, actual);
+        for (int i = 0; i < actual.getVector().length; i++) {
+			expected.getVector()[i].equals(actual.getVector()[i]);
+			System.out.println("actual: " + actual.getVector()[i].getnumeroComplejo());
+			System.out.println("expected: " + expected.getVector()[i].getnumeroComplejo());
+		}
+		for (int i = 0; i < actual.getVector().length; i++) {
+            System.out.println(expected.getVector()[i].equals(actual.getVector()[i]));
+        }
     }
 }

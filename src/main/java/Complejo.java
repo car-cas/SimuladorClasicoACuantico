@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 /**
  *
  * @author Carlos Andres Castaneda Lozano
@@ -53,6 +55,15 @@ public class Complejo {
      */
     public  Complejo conjugado(){
         return new Complejo(numeroA,numeroB*-1);
+    }
+
+    public String getnumeroComplejo() {
+        DecimalFormat df = new DecimalFormat("#.##");
+        if(numeroB < 0) {
+            return df.format(numeroA) + " - " + df.format(numeroB * -1) + "i";
+        } else {
+            return df.format(numeroA) + " + " + df.format(numeroB) + "i";
+        }
     }
 
     @Override
